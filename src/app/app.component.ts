@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-//import { RouterOutlet } from '@angular/router';
+import { AubreyDashboardComponent } from './aubrey-dashboard/aubrey-dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [AubreyDashboardComponent, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'data-portal';
