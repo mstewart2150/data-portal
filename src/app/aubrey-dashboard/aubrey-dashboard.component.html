@@ -1,5 +1,4 @@
-<p>aubrey-dashboard works!</p>
-<h2>Aubrey Dashboard</h2>
+<h1 class="dashboard-title">Aubrey Dashboard</h1>
 
 <div class="table-container">
   <table>
@@ -18,8 +17,8 @@
         <td class="temp" [ngClass]="{ 'hot': item.temperature > 72, 'cold': item.temperature < 67 }">
           {{ item.temperature }}
         </td>
-        <td>{{ item.humidity }}</td>
-        <td>{{ item.carbon_dioxide }}</td>
+        <td>{{ item.humidity }}%</td>
+        <td>{{ item.carbon_dioxide }} ppm</td>
         <td class="status" [ngClass]="{ 'normal': item.status === 'NORMAL', 'warning': item.status !== 'NORMAL' }">
           {{ item.status }}
         </td>

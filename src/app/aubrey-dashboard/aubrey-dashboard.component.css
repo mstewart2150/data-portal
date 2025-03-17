@@ -1,77 +1,124 @@
-/* ✅ Make the table responsive */
-.table-container {
-    overflow-x: auto;
-    max-width: 100%;
-    padding: 10px;
+.dashboard-title {
+    font-size: 2.2rem;
+    font-weight: 300; 
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50; 
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-family: 'Lato', 'Open Sans', sans-serif; 
+    background: none;
   }
   
-  /* ✅ Improve table layout */
+  /* center the title & table */
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* elegant table styling */
   table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
   }
   
-  /* ✅ Style table headers */
+  /* styled table headers */
   thead {
-    background-color: #007bff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
+    font-size: 16px;
   }
   
   th {
-    padding: 10px;
+    padding: 12px;
     text-align: left;
     font-weight: bold;
   }
   
-  /* ✅ Style table rows */
+  /* table rows */
   td {
-    padding: 8px;
+    padding: 10px;
     border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    text-align: left;
   }
   
-  /* ✅ Alternate row colors (striped effect) */
+  /* alternate row colors for readability */
   tbody tr:nth-child(even) {
     background-color: #f8f9fa;
   }
   
-  /* ✅ Highlight temperatures dynamically */
-  .temp.hot {
+  /* subtle hover effect */
+  tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* stylish temperature gradient */
+  .temp {
     font-weight: bold;
-    color: #ff4500; /* Orange for hot temperatures (above 80°F) */
+    text-align: center;
+    border-radius: 5px;
+    padding: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  /* temperature gradient effect */
+  .temp.hot {
+    background: linear-gradient(90deg, #ff5733, #ffcc00);
+    color: white;
   }
   
   .temp.cold {
-    font-weight: bold;
-    color: #1e90ff; /* Blue for cold temperatures (below 65°F) */
+    background: linear-gradient(90deg, #33aaff, #0056b3);
+    color: white;
   }
   
-  /* ✅ Style status text */
+  /* ✅ Status styling */
   .status {
     font-weight: bold;
     text-transform: uppercase;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
   }
   
-  /* ✅ Status color coding */
+  /* status colors */
   .status.normal {
-    color: #28a745; /* Green for normal */
+    background-color: #28a745;
+    color: white;
   }
   
   .status.warning {
-    color: #dc3545; /* Red for warnings */
-    font-weight: bold;
+    background-color: #dc3545;
+    color: white;
   }
   
-  /* ✅ Add smooth transition effect */
-  td {
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  /* ✅ Make text responsive */
+  /* make text responsive */
   @media (max-width: 768px) {
     th, td {
       font-size: 14px;
+      padding: 8px;
+    }
+    .dashboard-title {
+      font-size: 2rem;
+    }
+  }
+  
+  /* reduce padding on small screens */
+  @media (max-width: 480px) {
+    th, td {
+      font-size: 12px;
       padding: 6px;
+    }
+    .dashboard-title {
+      font-size: 1.8rem;
     }
   }
   
