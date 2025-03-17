@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'; //allows angular to manage and share this service across different components
-import {HttpClient } from '@angular/common/http'; // lets us make HTTP requests
+import { HttpClient } from '@angular/common/http'; // lets us make HTTP requests
 import { Observable } from 'rxjs'; //observable is like a promise; allows us to wait for the API response before doing something
 
 @Injectable({

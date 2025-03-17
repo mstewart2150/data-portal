@@ -1,2 +1,29 @@
 <p>aubrey-dashboard works!</p>
 <h2>Aubrey Dashboard</h2>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Datetime</th>
+        <th>Temperature (°F)</th>
+        <th>Humidity (%)</th>
+        <th>CO₂ (ppm)</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of jsonData">
+        <td>{{ item.timestamp }}</td>
+        <td class="temp" [ngClass]="{ 'hot': item.temperature > 72, 'cold': item.temperature < 67 }">
+          {{ item.temperature }}
+        </td>
+        <td>{{ item.humidity }}</td>
+        <td>{{ item.carbon_dioxide }}</td>
+        <td class="status" [ngClass]="{ 'normal': item.status === 'NORMAL', 'warning': item.status !== 'NORMAL' }">
+          {{ item.status }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

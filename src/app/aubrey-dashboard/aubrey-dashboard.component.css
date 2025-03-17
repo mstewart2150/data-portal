@@ -1,0 +1,77 @@
+/* ✅ Make the table responsive */
+.table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 10px;
+  }
+  
+  /* ✅ Improve table layout */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* ✅ Style table headers */
+  thead {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  th {
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  /* ✅ Style table rows */
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* ✅ Alternate row colors (striped effect) */
+  tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  /* ✅ Highlight temperatures dynamically */
+  .temp.hot {
+    font-weight: bold;
+    color: #ff4500; /* Orange for hot temperatures (above 80°F) */
+  }
+  
+  .temp.cold {
+    font-weight: bold;
+    color: #1e90ff; /* Blue for cold temperatures (below 65°F) */
+  }
+  
+  /* ✅ Style status text */
+  .status {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* ✅ Status color coding */
+  .status.normal {
+    color: #28a745; /* Green for normal */
+  }
+  
+  .status.warning {
+    color: #dc3545; /* Red for warnings */
+    font-weight: bold;
+  }
+  
+  /* ✅ Add smooth transition effect */
+  td {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* ✅ Make text responsive */
+  @media (max-width: 768px) {
+    th, td {
+      font-size: 14px;
+      padding: 6px;
+    }
+  }
+  
