@@ -1,2 +1,18 @@
-<h1>My Data Portal</h1>
-<app-aubrey-dashboard></app-aubrey-dashboard>
+<h1>Data Portal</h1>
+
+<div class="dashboard-selector">
+  <label for="dashboardSelect">Choose a dashboard:</label>
+  <select id="dashboardSelect" (change)="handleDashboardChange($event)">
+    <option value="aubrey">Aubrey</option>
+    <option value="jess">Jess</option>
+  </select>
+</div>
+
+<!-- Conditionally render the selected dashboard -->
+<div *ngIf="selectedDashboard === 'aubrey'">
+  <app-aubrey-dashboard></app-aubrey-dashboard>
+</div>
+
+<div *ngIf="selectedDashboard === 'jess'">
+  <app-jess-dashboard></app-jess-dashboard>
+</div>

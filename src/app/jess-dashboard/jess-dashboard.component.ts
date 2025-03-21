@@ -6,13 +6,13 @@ import annotationPlugin from 'chartjs-plugin-annotation';
 Chart.register(annotationPlugin);
 
 @Component({
-  selector: 'app-aubrey-dashboard',
+  selector: 'app-jess-dashboard',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './aubrey-dashboard.component.html',
-  styleUrls: ['./aubrey-dashboard.component.css']
+  templateUrl: './jess-dashboard.component.html',
+  styleUrls: ['./jess-dashboard.component.css']
 })
-export class AubreyDashboardComponent implements OnInit, OnDestroy {
+export class JessDashboardComponent implements OnInit, OnDestroy {
   jsonData: any = null;
   private refreshInterval: any;
 
@@ -29,7 +29,7 @@ export class AubreyDashboardComponent implements OnInit, OnDestroy {
   }
 
   fetchData() {
-    this.dataService.getData('aubrey').subscribe(response => {
+    this.dataService.getData('jess').subscribe(response => {
       if (response && response.length > 0) {
         this.jsonData = response;
         this.updateChart();
