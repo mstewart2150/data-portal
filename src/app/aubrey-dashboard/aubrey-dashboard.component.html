@@ -12,6 +12,8 @@
           <th>Timestamp</th>
           <th>Temperature (°F)</th>
           <th>Humidity (%)</th>
+          <th>CO₂ (ppm)</th> <!-- New CO₂ column -->
+          <th>Status</th> <!-- New status column -->
         </tr>
       </thead>
       <tbody>
@@ -22,5 +24,8 @@
             'cold': item.temperature <= 67
           }">{{ item.temperature }}</td>
           <td>{{ item.humidity }}</td>
+          <td>{{ item.carbon_dioxide }}</td> <!-- New CO₂ field -->
+          <td>{{ item.status }}</td> <!-- New status field -->
         </tr>
+      </tbody>
      
