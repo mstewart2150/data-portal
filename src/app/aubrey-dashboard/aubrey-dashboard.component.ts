@@ -15,6 +15,7 @@ Chart.register(annotationPlugin);
 export class AubreyDashboardComponent implements OnInit, OnDestroy {
   jsonData: any = null;
   private refreshInterval: any;
+  darkModeEnabled: boolean = false;
 
   @ViewChild('dashboardChart', { static: false }) chartRef!: ElementRef<HTMLCanvasElement>;
   chart: Chart | null = null;
@@ -22,19 +23,43 @@ export class AubreyDashboardComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
+    const darkMode = localStorage.getItem('darkMode');
+    this.darkModeEnabled = darkMode === 'true';
+
+    if (this.darkModeEnabled) {
+      document.body.classList.add('dark-mode');
+    }
+
     this.fetchData();
-    this.refreshInterval = setInterval(() => {
-      this.fetchData();
-    }, 10000);
+    this.refreshInterval = setInterval(() => this.fetchData(), 30000);
+  }
+
+  toggleDarkMode(event: any) {
+    this.darkModeEnabled = event.target.checked;
+
+    if (this.darkModeEnabled) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', 'false');
+    }
   }
 
   fetchData() {
-    this.dataService.getData('aubrey').subscribe(response => {
-      if (response && response.length > 0) {
-        this.jsonData = response;
-        this.updateChart();
-      } else {
-        console.warn('No data received.');
+    console.log('Fetching data...');
+    this.dataService.getData('aubrey').subscribe({
+      next: (response) => {
+        console.log('Received response:', response);
+        if (response && response.length > 0) {
+          this.jsonData = response;
+          this.updateChart();
+        } else {
+          console.warn('No data received or response was empty.');
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching data:', err);
       }
     });
   }
@@ -59,7 +84,7 @@ export class AubreyDashboardComponent implements OnInit, OnDestroy {
               backgroundColor: 'rgba(255, 0, 0, 0.2)',
               fill: false,
               pointRadius: 0,
-              yAxisID: 'yTemp'  // assign to temperature axis
+              yAxisID: 'yTemp'
             },
             {
               label: 'Humidity (%)',
@@ -68,7 +93,7 @@ export class AubreyDashboardComponent implements OnInit, OnDestroy {
               backgroundColor: 'rgba(0, 0, 255, 0.2)',
               fill: false,
               pointRadius: 0,
-              yAxisID: 'yHumidity'  // assign to humidity axis
+              yAxisID: 'yHumidity'
             }
           ]
         },
@@ -100,7 +125,7 @@ export class AubreyDashboardComponent implements OnInit, OnDestroy {
                 text: 'Humidity (%)'
               },
               grid: {
-                drawOnChartArea: false  // prevents overlapping grid lines
+                drawOnChartArea: false
               },
               min: 10,
               max: 60

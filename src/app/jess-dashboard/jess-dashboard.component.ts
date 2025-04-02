@@ -25,7 +25,7 @@ export class JessDashboardComponent implements OnInit, OnDestroy {
     this.fetchData();
     this.refreshInterval = setInterval(() => {
       this.fetchData();
-    }, 10000);
+    }, 30000);
   }
 
   fetchData() {
@@ -90,7 +90,7 @@ export class JessDashboardComponent implements OnInit, OnDestroy {
                 text: 'Temperature (°F)'
               },
               min: 65,
-              max: 75
+              max: 80
             },
             yHumidity: {
               type: 'linear',
@@ -113,7 +113,7 @@ export class JessDashboardComponent implements OnInit, OnDestroy {
                   type: 'box',
                   yScaleID: 'yTemp',
                   yMin: 73,
-                  yMax: 75,
+                  yMax: 80,
                   backgroundColor: 'rgba(255, 0, 0, 0.1)',
                   borderWidth: 0
                 },

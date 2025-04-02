@@ -1,31 +1,40 @@
-<h2 class="dashboard-title">Aubrey's Room</h2>
-
-<div class="dashboard-container">
-  <div class="card chart-card">
-    <canvas #dashboardChart></canvas>
+<div class="dashboard-header">
+    <h2 class="dashboard-title">Aubrey's Room</h2>
+  
+    <label class="switch">
+        <input type="checkbox" (change)="toggleDarkMode($event)" [checked]="darkModeEnabled">      <span class="slider"></span>
+    </label>
   </div>
-
-  <div class="card table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Timestamp</th>
-          <th>Temperature (°F)</th>
-          <th>Humidity (%)</th>
-          <th>CO₂ (ppm)</th> <!-- New CO₂ column -->
-          <th>Status</th> <!-- New status column -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of jsonData">
-          <td>{{ item.timestamp }}</td>
-          <td class="temp" [ngClass]="{
-            'hot': item.temperature >= 73,
-            'cold': item.temperature <= 67
-          }">{{ item.temperature }}</td>
-          <td>{{ item.humidity }}</td>
-          <td>{{ item.carbon_dioxide }}</td> <!-- New CO₂ field -->
-          <td>{{ item.status }}</td> <!-- New status field -->
-        </tr>
-      </tbody>
-     
+  
+  <div class="dashboard-container">
+    <div class="card chart-card">
+      <canvas #dashboardChart></canvas>
+    </div>
+  
+    <div class="card table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Temperature (°F)</th>
+            <th>Humidity (%)</th>
+            <th>CO₂ (ppm)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of jsonData">
+            <td>{{ item.timestamp }}</td>
+            <td class="temp" [ngClass]="{
+              'hot': item.temperature >= 73,
+              'cold': item.temperature <= 67
+            }">{{ item.temperature }}</td>
+            <td>{{ item.humidity }}</td>
+            <td>{{ item.carbon_dioxide }}</td>
+            <td>{{ item.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
